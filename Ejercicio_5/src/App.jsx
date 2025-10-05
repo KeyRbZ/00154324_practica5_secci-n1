@@ -3,8 +3,20 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+function MyButton(props) {
+  return (
+    <button onClick={props.onClick}>
+      Soy un botón custom y mi cuenta es {props.count}
+    </button>
+  )
+}
+
 function App() {
   const [count, setCount] = useState(0)
+
+  function increment() {
+    setCount((count) => count + 1)
+  }
 
   return (
     <>
@@ -18,9 +30,7 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+        <MyButton onClick={increment} count={count} />
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
